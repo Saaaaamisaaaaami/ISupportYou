@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Page</title>
+  <link rel="stylesheet" href="chatpage.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="initiatives.html">Initiatives</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="editing.html">Editing</a></li>
+                <li><a href="index.html">Home Page</a></li>
+            </ul>
+    <h1>Chat Page</h1>
+  </header>
+  <div class="chat-container">
+    <aside class="chat-list">
+      <ul id="chat-list">
+        <!-- Chat items added dynamically by JS -->
+      </ul>
+    </aside>
+    <main class="chat-window">
+    <div id="chat-header">~Select a chat to begin~</div>
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="message-input">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </main>
+
+    <script>
+        const chats = [
+  {
+    id: 1,
+    name: "Alice",
+    messages: [
+      { text: "Hey there!", sender: "Alice", unread: true },
+      { text: "How are you?", sender: "Alice", unread: true }
+    ]
+  },
+  {
+    id: 2,
+    name: "Bob",
+    messages: [
+      { text: "Hello!", sender: "Bob", unread: true },
+      { text: "Wanna grab a coffee?", sender: "Bob", unread: true }
+    ]
+  },
+  {
+    id: 3,
+    name: "Charlie",
+    messages: [
+      { text: "What's up?", sender: "Charlie", unread: true }
+    ]
+  },
+  {
+    id: 4,
+    name: "Dana",
+    messages: [
+      { text: "Good morning!", sender: "Dana", unread: true },
+      { text: "Let's meet at 10.", sender: "Dana", unread: true }
+    ]
+  },
+  {
+    id: 5,
+    name: "Eve",
+    messages: [
+      { text: "Hey!", sender: "Eve", unread: true },
+      { text: "Did you finish the grid?", sender: "Eve", unread: true }
+    ]
+  }
+];
+
+  let activeChatId = null;
+
+// Load chats from localStorage
+function loadChatsFromStorage() {
+  const savedChats = JSON.parse(localStorage.getItem("chats"));
+  if (savedChats) {
+    savedChats.forEach(savedChat => {
+      const chat = chats.find(c => c.id === savedChat.id);
+      if (chat) {
+        chat.messages = savedChat.messages;
+      }
+    });
+  }
+}
+
+// Save chats to localStorage
+function saveChatsToStorage() {
+  localStorage.setItem("chats", JSON.stringify(chats));
+}
+
+// Load chat list on page load
+document.addEventListener("DOMContentLoaded", () => {
+  loadChatsFromStorage();
+  loadChatList();
+});
+
+function loadChatList() {
+  const chatList = document.getElementById("chat-list");
+  chatList.innerHTML = "";
+
+  chats.forEach(chat => {
+    const listItem = document.createElement("li");
+    listItem.textContent = chat.name;
+    listItem.className = chat.messages.some(msg => msg.unread) ? "unread" : "";
+    listItem.onclick = () => openChat(chat.id);
+
+    const unreadCount = chat.messages.filter(msg => msg.unread).length;
+    if (unreadCount > 0) {
+      const unreadBadge = document.createElement("span");
+      unreadBadge.textContent = unreadCount;
+      unreadBadge.className = "unread-badge";
+      listItem.appendChild(unreadBadge);
+    }
+
+    chatList.appendChild(listItem);
+  });
+}
+
+function openChat(chatId) {
+  const chat = chats.find(c => c.id === chatId);
+  activeChatId = chatId;
+  const chatHeader = document.getElementById("chat-header");
+  chatHeader.textContent = `Chat with ${chat.name}`;
+  const chatMessages = document.getElementById("chat-messages");
+
+  chatMessages.innerHTML = chat.messages
+    .map(msg => `<div class="${msg.sender === "You" ? "message-sent" : "message-received"}">${msg.sender}: ${msg.text}</div>`)
+    .join("");
+
+  // Mark messages as read
+  chat.messages.forEach(msg => (msg.unread = false));
+  saveChatsToStorage(); // Save updated chat to localStorage
+  loadChatList(); // Refresh the list to update unread counts
+}
+function sendMessage() {
+  const messageInput = document.getElementById("message-input");
+  const messageText = messageInput.value.trim();
+  if (!messageText || !activeChatId) return;
+
+  const chat = chats.find(c => c.id === activeChatId);
+  chat.messages.push({ text: messageText, sender: "You" });
+
+  // Update chat messages and save to localStorage
+  openChat(activeChatId);
+  saveChatsToStorage();
+  messageInput.value = "";
+}
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness & AI Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="initiatives.html">Initiatives</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="editing.html">Editing</a></li>
+                <li><a href="chatpage.html">Chat Page</a></li>
+            </ul>
+            <div class="right-side">
+                <input type="text" placeholder="Search...">
+                <!-- Add links to the Log In and Sign Up buttons -->
+                <a href="login.html"><button>Log In</button></a>
+                <a href="signup.html"><button>Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Motivational Quote Section -->
+    <section class="motivational-grid">
+        <div class="grid">
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4SYKBPeg1JIM-O66hW9X2BoWNXJoCUO8Z1w&s">
+ <img src="https://www.ryrob.com/wp-content/uploads/2017/09/hustle_quotes_motivation_The-struggle-you’re-in-today-is-developing.jpg">
+ <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2024-01/inspirational-quotes-sc-290123-02-dcd10d.jpg">
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOm284dLCORK3GQ4_vn4oo-DIHrimVgPfbsg&s">
+ <img src="https://img.freepik.com/premium-vector/motivational-quotes-quotes-about-life-life-quotes_681002-461.jpg">
+ <img src="https://parade.com/.image/t_share/MTkzMDEwNDIzOTkyMTY1NTk3/inspirational-quote-from-audrey-hepburn.png">
+        </div>
+    </section>
+   <section class="about-the-coder">
+    <div class="text-box">
+        <h1>About The Coder</h1>
+    <p>Hi! I'm Samriddhi. I'm 14 years old, and I study at Indus International School Hyderabad. Like many people, I'm not always confident about the person I am, so it's why I built this website - to understand that it's OK. I hope that all walks of life use this platform as a safe space. The chat page, iniatives, and articles present on this website are yours to create and discover. Express your thoughts, feelings, and ideas and we will be ready to hear in ISupportYou.</p>
+    </div>
+   </section>
+   <section class="introduction video">
+    <video width="600" controls>
+        <source src="/Users/samriddhi/Desktop/Screen Recording 2024-11-06 at 4.22.19 PM.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>    
+   </section>
+   <iframe class="chatbot-iframe"
+   allow="microphone;"
+   width="350"
+height="430"
+src="https://console.dialogflow.com/api-client/demo/embedded/f218ab66-60de-4668-b47a-796eb5952342">
+</iframe>
+<button class="chat-button" onclick="toggleChat()"> AI Chat</button>
+</div>
+<script>
+    function toggleChat() {
+        const iframe = document.querySelector('.chatbot-iframe');
+        const button = document.querySelector('.chat-button');
+
+        if (iframe.style.display === 'none' || iframe.style.display === '') {
+            iframe.style.display = 'block';
+            button.textContent = 'Close AI Chat';
+        } else {
+            iframe.style.display = 'none';
+            button.textContent = 'Open AI Chat';
+        }
+    }
+</script>
+    <!-- Fitness and AI Section -->
+    <section class="fitness-ai-section">
+        <div class="custom-plan">
+            <p>Want to take charge? Design your customized fitness and diet plan <a href="fitnessplan.html">here</a>.</p>
+        </div>
+    </section>
+    <!-- Welcome Footer -->
+    <footer>
+        <div class="footer">
+            <h2>Welcome</h2>
+        </div>
+    </footer>
+    <script>"main.js"</script>
+</body>
+</html>

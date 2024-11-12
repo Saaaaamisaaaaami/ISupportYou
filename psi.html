@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Positive Support Initiative</title>
+        <link rel="stylesheet" href="psi.css">
+    </head>
+    <body>
+        <section class="header"></section> 
+        <div class="header-item"> 
+            <h1>The Positive Support Initiative</h1>
+        </div>
+        <section class="hero">
+            <div class="hero-item">
+                <h2>The Positive Support Initiative aims to support cultural accessibility and inclusivity.</h2>
+            </div>
+            <div class="large-textbox">Positive support and cultural inclusivity. It's a complex topic. And a complex comparison. Our world is constantly changing, and when it comes to these two, no one really knows what to do when conflict arises. Through this initiative, we aim to understand the complexity behind these issues and comprehend the situation through the utmost sincerity that we can offer to keep our cultural iceberg afloat. We wouldn't want a Titanic situation anytime soon. Sorry. Bad joke.</div>
+        </section>
+        <div class="paragraph-item">
+            <p>Below are the initiatives and projects that we plan on doing:</p>
+        </div>
+        <div class="comments">
+            <button onclick="openCommentBox()">SHARE YOUR THOUGHTS</button>
+        </div>
+        <div id="commentSection"></div>
+
+        <!-- New container for hero items -->
+        <div class="hero-items-container">
+            <div class="hero-item">
+                <img src="https://cdn.internationalstudentloan.com/assets/ISTL/images/redesign/optimized/aid-World-Organizations.webp" class="hero-img">
+                <h3>Partnerships with financial aid organizations</h3>
+            </div>
+            <div class="hero-item">
+                <img src="https://images.ctfassets.net/0747vf8c5sgn/39PCJc7oydYh9CaRpT4gza/1cc0b588328eb136fd809c37e1da59a7/Collaborative_work_is_essential_to_the_success_of_most_businesses..png" class="hero-img">
+                <h3>Collaborations on projects with people from all over the world on ISupportYou</h3>
+            </div>
+            <div class="hero-item">
+                <img src="https://www.wildapricot.com/wp-content/uploads/2023/06/Fundraising-Ideas.png" class="hero-img">
+                <h3>Host fundraisers and events to support the issues</h3>
+            </div>
+        </div>
+
+        <script>
+            function openCommentBox() {
+                if (!document.getElementById("commentBoxContainer")) {
+                    const commentBoxContainer = document.createElement("div");
+                    commentBoxContainer.id = "commentBoxContainer";
+                    
+                    const commentBox = document.createElement("textarea");
+                    commentBox.id = "commentBox";
+                    commentBox.placeholder = "Write your thoughts here...";
+                    
+                    const sendButton = document.createElement("button");
+                    sendButton.id = "sendButton";
+                    sendButton.innerText = "Send";
+                    sendButton.onclick = postComment;
+                    
+                    commentBoxContainer.appendChild(commentBox);
+                    commentBoxContainer.appendChild(sendButton);
+                    
+                    document.querySelector(".comments").appendChild(commentBoxContainer);
+                    
+                    commentBoxContainer.style.display = "block";
+                }
+            }
+
+            function postComment() {
+                const commentBox = document.getElementById("commentBox");
+                const commentSection = document.getElementById("commentSection");
+                
+                if (commentBox.value.trim() !== "") {
+                    const comment = document.createElement("div");
+                    comment.className = "comment";
+                    comment.innerText = commentBox.value.trim();
+                    
+                    commentSection.appendChild(comment);
+                    commentBox.value = "";
+                } else {
+                    alert("Please write something before sending.");
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,183 @@
+body {
+    font-family: Cambria, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+  
+  header {
+    background-color: #a1bce0;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #a1bce0;
+    padding: 15px;
+    align-items: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+.custom-plan{
+    justify-content: space-between;
+    background-color:#a1bce0
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    font-weight: normal;
+    padding: 10px 15px;
+    display: block;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.navbar ul li a:hover {
+    background-color: #555;
+}
+  
+  .chat-container {
+    display: flex;
+    height: 90vh;
+  }
+  
+  .chat-list {
+    width: 25%;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-right: 2px solid white;
+    overflow-y: auto;
+  }
+  
+  .chat-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .chat-list li {
+    padding: 15px;
+    cursor: pointr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .chat-list li.unread {
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .chat-list li:hover {
+    background-color: white;
+    color: #a1bce0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  
+  .chat-window {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: #a1bce0;
+  }
+  
+  #chat-header {
+    padding: 15px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: white;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  .message-sent,
+.message-received {
+  max-width: 70%;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 15px;
+  position: relative;
+}
+
+.message-sent {
+  background-color: #a1bce0;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.message-received {
+  background-color: #e0e7f1;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+/* Optional: Add triangle pointers */
+.message-sent::after,
+.message-received::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.message-sent::after {
+  top: 0;
+  right: -10px;
+  border-width: 0 0 10px 10px;
+  border-color: transparent transparent #a1bce0 transparent;
+}
+
+.message-received::after {
+  top: 0;
+  left: -10px;
+  border-width: 0 10px 10px 0;
+  border-color: transparent #e0e7f1 transparent transparent;
+}
+
+.message-input {
+  display: flex;
+  border-top: 2px solid #a1bce0;
+  padding: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #a1bce0;
+  border-radius: 5px;
+  color: #333;
+}
+
+.message-input button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #a1bce0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
